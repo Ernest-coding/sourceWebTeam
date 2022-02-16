@@ -290,7 +290,7 @@
             -->
         </table>
 
-        <table tableName="user" >
+        <table tableName="t_user" >
             <property name="constructorBased" value="false"/>
             <property name="ignoreQualifiersAtRuntime" value="false"/>
             <property name="immutable" value="false"/>
