@@ -281,6 +281,7 @@
                 <property name="property" value="modifiedTime"/>
             </columnOverride>
 
+
             <!-- ignoreColumn设置一个MGB忽略的列，如果设置了改列，那么在生成的domain中，生成的SQL中，都不会有该列出现
                column:指定要忽略的列的名字；
                delimitedColumnName：参考table元素的delimitAllColumns配置，默认为false
@@ -290,7 +291,7 @@
             -->
         </table>
 
-        <table tableName="user" >
+        <table tableName="t_user" >
             <property name="constructorBased" value="false"/>
             <property name="ignoreQualifiersAtRuntime" value="false"/>
             <property name="immutable" value="false"/>
@@ -311,6 +312,9 @@
             </columnOverride>
             <columnOverride column="modified_user">
                 <property name="property" value="modifiedUser"/>
+            </columnOverride>
+            <columnOverride column="token">
+                <property name="property" value="token"/>
             </columnOverride>
         </table>
 
