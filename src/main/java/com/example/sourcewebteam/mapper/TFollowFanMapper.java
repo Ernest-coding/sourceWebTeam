@@ -2,6 +2,8 @@ package com.example.sourcewebteam.mapper;
 
 import com.example.sourcewebteam.entity.TFollowFan;
 import java.util.List;
+
+import com.example.sourcewebteam.entity.TUser;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
@@ -88,4 +90,18 @@ public interface TFollowFanMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TFollowFan record);
+
+    @Select({
+            "select",
+            "t_user.id, t_user.username",
+            "from t_follow_fan",
+            "RIGHT JOIN t_user",
+           "ON t_user.id=t_follow_fan.follow_id",
+            "where t_follow_fan.fan_id=#{uid,jdbcType=BIGINT};"
+    })
+    @Results({
+            @Result(column="t_user.id", property="id", jdbcType=JdbcType.BIGINT, id=true),
+            @Result(column="t_user.username", property="userName", jdbcType=JdbcType.VARCHAR),
+    })
+    List<TUser> selectAllFollowById(Long uid);
 }

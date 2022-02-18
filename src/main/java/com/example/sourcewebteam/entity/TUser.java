@@ -1,5 +1,8 @@
 package com.example.sourcewebteam.entity;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 
 public class TUser extends baseEntity {
