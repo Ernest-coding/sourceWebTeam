@@ -34,12 +34,14 @@ public interface TPostMapper {
         "content, tag, image, ",
         "video, type, is_deleted, ",
         "creator_id, hits, favorites, ",
-        "create_time, modified_time)",
+        "create_time, modified_time, ",
+        "agree, disagree, summary)",
         "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
         "#{content,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, ",
         "#{video,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, ",
         "#{creatorId,jdbcType=BIGINT}, #{hits,jdbcType=BIGINT}, #{favorites,jdbcType=BIGINT}, ",
-        "#{createTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP})"
+        "#{createTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, #{agree,jdbcType=INTEGER}, ",
+        "#{disagree,jdbcType=INTEGER}, #{summary,jdbcType=VARCHAR})"
     })
     int insert(TPost record);
 
@@ -52,7 +54,7 @@ public interface TPostMapper {
     @Select({
         "select",
         "id, title, content, tag, image, video, type, is_deleted, creator_id, hits, favorites, ",
-        "create_time, modified_time",
+        "create_time, modified_time, agree, disagree, summary",
         "from t_post",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -69,7 +71,10 @@ public interface TPostMapper {
         @Result(column="hits", property="hits", jdbcType=JdbcType.BIGINT),
         @Result(column="favorites", property="favorites", jdbcType=JdbcType.BIGINT),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP)
+        @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="agree", property="agree", jdbcType=JdbcType.INTEGER),
+        @Result(column="disagree", property="disagree", jdbcType=JdbcType.INTEGER),
+        @Result(column="summary", property="summary", jdbcType=JdbcType.INTEGER)
     })
     TPost selectByPrimaryKey(Integer id);
 
@@ -82,7 +87,7 @@ public interface TPostMapper {
     @Select({
         "select",
         "id, title, content, tag, image, video, type, is_deleted, creator_id, hits, favorites, ",
-        "create_time, modified_time",
+        "create_time, modified_time, agree, disagree, summary",
         "from t_post",
         "order by id"
     })
@@ -99,7 +104,10 @@ public interface TPostMapper {
         @Result(column="hits", property="hits", jdbcType=JdbcType.BIGINT),
         @Result(column="favorites", property="favorites", jdbcType=JdbcType.BIGINT),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP)
+        @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="agree", property="agree", jdbcType=JdbcType.INTEGER),
+        @Result(column="disagree", property="disagree", jdbcType=JdbcType.INTEGER),
+        @Result(column="summary", property="summary", jdbcType=JdbcType.INTEGER)
     })
     List<TPost> selectAll();
 
@@ -123,7 +131,21 @@ public interface TPostMapper {
           "favorites = #{favorites,jdbcType=BIGINT},",
           "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "modified_time = #{modifiedTime,jdbcType=TIMESTAMP}",
+          "#{agree,jdbcType=INTEGER}, ",
+          "#{disagree,jdbcType=INTEGER},",
+          "#{summary,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TPost record);
+
+    @Update({
+        "update t_post",
+        "set agree = #{agree,jdbcType=BIGINT}",
+        "where id = #{id,jdbcType=INTEGER}"
+    })
+    int updateAgreeById(int id, int agree);
+
+    @Select("select agree from t_post where id = #{id,jdbcType=INTEGER}")
+    int selectAgreeById(int id);
+
 }

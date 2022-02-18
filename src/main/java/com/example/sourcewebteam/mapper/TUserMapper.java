@@ -41,7 +41,7 @@ public interface TUserMapper {
         "#{email,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{avatar,jdbcType=VARCHAR}, ",
         "#{isDelete,jdbcType=INTEGER}, #{createdUser,jdbcType=VARCHAR}, ",
         "#{createdTime,jdbcType=TIMESTAMP}, #{modifiedUser,jdbcType=VARCHAR}, ",
-        "#{modifiedTime,jdbcType=TIMESTAMP}), #{token,jdbcType=CHAR}"
+        "#{modifiedTime,jdbcType=TIMESTAMP}), #{token,jdbcType=CHAR})"
     })
     int insert(TUser record);
 
