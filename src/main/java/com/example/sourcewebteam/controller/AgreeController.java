@@ -4,7 +4,6 @@ import com.example.sourcewebteam.controller.ex.UserNotLoginException;
 import com.example.sourcewebteam.entity.TUser;
 import com.example.sourcewebteam.mapper.TUserMapper;
 import com.example.sourcewebteam.service.PostService;
-import com.example.sourcewebteam.service.UserSerivce;
 import com.example.sourcewebteam.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
