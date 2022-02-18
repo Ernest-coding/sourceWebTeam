@@ -22,9 +22,8 @@ public class IndexController extends BaseController{
             if(cookie.getName().equals("token")){
                 String token = cookie.getValue();
                 TUser user = tuserMapper.selectByToken(token);
-                System.out.println(user.getUsername());
                 if(user != null) {
-                    request.getSession().setAttribute("user", user);
+                    request.getSession().setAttribute("username", user.getUsername());
                 }
                 break;
             }
