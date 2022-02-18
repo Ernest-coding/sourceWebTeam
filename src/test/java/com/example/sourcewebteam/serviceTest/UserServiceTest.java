@@ -16,7 +16,7 @@ public class UserServiceTest {
 
     @Test
     public void UserServiceSelectAllFollowByIdTest(){
-        Long uid = (long)1;
+        Integer uid = 1;
         List<TUser> tUsers = userService.selectAllFollowById(uid);
         System.out.println(tUsers);
     }

@@ -24,9 +24,9 @@ public class PostMapperTests {
         post.setVideo("video");
         post.setType(0);
         post.setIsDeleted(0);
-        post.setCreatorId((long)2333);
-        post.setHits((long)233);
-        post.setFavorites((long)233);
+        post.setCreatorId(2333);
+        post.setHits(233);
+        post.setFavorites(233);
         Date date = new Date();
         post.setCreateTime(date);
         post.setModifiedTime(date);

@@ -19,7 +19,7 @@ public interface TNotificationMapper {
      */
     @Delete({
         "delete from t_notification",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Long id);
 
@@ -33,8 +33,8 @@ public interface TNotificationMapper {
         "insert into t_notification (id, notifier, ",
         "receiver, create_time, ",
         "content, status)",
-        "values (#{id,jdbcType=BIGINT}, #{notifier,jdbcType=BIGINT}, ",
-        "#{receiver,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, ",
+        "values (#{id,jdbcType=INTEGER}, #{notifier,jdbcType=INTEGER}, ",
+        "#{receiver,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, ",
         "#{content,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})"
     })
     int insert(TNotification record);
@@ -49,12 +49,12 @@ public interface TNotificationMapper {
         "select",
         "id, notifier, receiver, create_time, content, status",
         "from t_notification",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="notifier", property="notifier", jdbcType=JdbcType.BIGINT),
-        @Result(column="receiver", property="receiver", jdbcType=JdbcType.BIGINT),
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="notifier", property="notifier", jdbcType=JdbcType.INTEGER),
+        @Result(column="receiver", property="receiver", jdbcType=JdbcType.INTEGER),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
         @Result(column="status", property="status", jdbcType=JdbcType.INTEGER)
@@ -74,9 +74,9 @@ public interface TNotificationMapper {
         "order by id"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="notifier", property="notifier", jdbcType=JdbcType.BIGINT),
-        @Result(column="receiver", property="receiver", jdbcType=JdbcType.BIGINT),
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="notifier", property="notifier", jdbcType=JdbcType.INTEGER),
+        @Result(column="receiver", property="receiver", jdbcType=JdbcType.INTEGER),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
         @Result(column="status", property="status", jdbcType=JdbcType.INTEGER)
@@ -91,12 +91,12 @@ public interface TNotificationMapper {
      */
     @Update({
         "update t_notification",
-        "set notifier = #{notifier,jdbcType=BIGINT},",
-          "receiver = #{receiver,jdbcType=BIGINT},",
+        "set notifier = #{notifier,jdbcType=INTEGER},",
+          "receiver = #{receiver,jdbcType=INTEGER},",
           "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "content = #{content,jdbcType=VARCHAR},",
           "status = #{status,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TNotification record);
 }

@@ -10,7 +10,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long id;
+    private Integer id;
 
     /**
      *
@@ -19,7 +19,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long userId;
+    private Integer userId;
 
     /**
      *
@@ -28,7 +28,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long postId;
+    private Integer postId;
 
     /**
      *
@@ -47,7 +47,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -59,7 +59,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -71,7 +71,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
@@ -83,7 +83,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -95,7 +95,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getPostId() {
+    public Integer getPostId() {
         return postId;
     }
 
@@ -107,7 +107,7 @@ public class THistory extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setPostId(Long postId) {
+    public void setPostId(Integer postId) {
         this.postId = postId;
     }
 

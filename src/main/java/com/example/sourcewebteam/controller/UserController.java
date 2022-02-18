@@ -18,8 +18,8 @@ public class UserController {
 
     @RequestMapping("/api/list-of-people")
     public JsonResult<Void> selectAllFollowById(@CookieValue("uid") String uid) throws Exception {
-        Long uidLong = uidStringToLong(uid);
-        List<TUser> tUsers = userService.selectAllFollowById(uidLong);
+        Integer uidInteger = uidStringToInteger(uid);
+        List<TUser> tUsers = userService.selectAllFollowById(uidInteger);
         JsonResult<Void> result = selectAllFollowByIdResultsToJsonString(tUsers);
         return result;
     }
@@ -41,8 +41,7 @@ public class UserController {
         return result;
     }
 
-    private Long uidStringToLong(String uid) throws Exception {
-        Long longUid = Long.valueOf(uid);
-        return  longUid;
+    private Integer uidStringToInteger(String uid) throws Exception {
+        return Integer.valueOf(uid);
     }
 }

@@ -34,8 +34,8 @@ public interface TFollowFanMapper {
     @Insert({
         "insert into t_follow_fan (id, follow_id, ",
         "fan_id)",
-        "values (#{id,jdbcType=INTEGER}, #{followId,jdbcType=BIGINT}, ",
-        "#{fanId,jdbcType=BIGINT})"
+        "values (#{id,jdbcType=INTEGER}, #{followId,jdbcType=INTEGER}, ",
+        "#{fanId,jdbcType=INTEGER})"
     })
     int insert(TFollowFan record);
 
@@ -53,8 +53,8 @@ public interface TFollowFanMapper {
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="follow_id", property="followId", jdbcType=JdbcType.BIGINT),
-        @Result(column="fan_id", property="fanId", jdbcType=JdbcType.BIGINT)
+        @Result(column="follow_id", property="followId", jdbcType=JdbcType.INTEGER),
+        @Result(column="fan_id", property="fanId", jdbcType=JdbcType.INTEGER)
     })
     TFollowFan selectByPrimaryKey(Integer id);
 
@@ -72,8 +72,8 @@ public interface TFollowFanMapper {
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="follow_id", property="followId", jdbcType=JdbcType.BIGINT),
-        @Result(column="fan_id", property="fanId", jdbcType=JdbcType.BIGINT)
+        @Result(column="follow_id", property="followId", jdbcType=JdbcType.INTEGER),
+        @Result(column="fan_id", property="fanId", jdbcType=JdbcType.INTEGER)
     })
     List<TFollowFan> selectAll();
 
@@ -85,8 +85,8 @@ public interface TFollowFanMapper {
      */
     @Update({
         "update t_follow_fan",
-        "set follow_id = #{followId,jdbcType=BIGINT},",
-          "fan_id = #{fanId,jdbcType=BIGINT}",
+        "set follow_id = #{followId,jdbcType=INTEGER},",
+          "fan_id = #{fanId,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TFollowFan record);
@@ -97,11 +97,11 @@ public interface TFollowFanMapper {
             "from t_follow_fan",
             "RIGHT JOIN t_user",
            "ON t_user.id=t_follow_fan.follow_id",
-            "where t_follow_fan.fan_id=#{uid,jdbcType=BIGINT};"
+            "where t_follow_fan.fan_id=#{uid,jdbcType=INTEGER};"
     })
     @Results({
-            @Result(column="t_user.id", property="id", jdbcType=JdbcType.BIGINT, id=true),
+            @Result(column="t_user.id", property="id", jdbcType=JdbcType.INTEGER, id=true),
             @Result(column="t_user.username", property="userName", jdbcType=JdbcType.VARCHAR),
     })
-    List<TUser> selectAllFollowById(Long uid);
+    List<TUser> selectAllFollowById(Integer uid);
 }

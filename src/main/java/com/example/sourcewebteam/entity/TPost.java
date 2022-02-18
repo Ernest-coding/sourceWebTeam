@@ -82,7 +82,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long creatorId;
+    private Integer creatorId;
 
     /**
      *
@@ -91,7 +91,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long hits;
+    private Integer hits;
 
     /**
      *
@@ -100,7 +100,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long favorites;
+    private Integer favorites;
 
     /**
      *
@@ -347,7 +347,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getCreatorId() {
+    public Integer getCreatorId() {
         return creatorId;
     }
 
@@ -359,7 +359,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setCreatorId(Long creatorId) {
+    public void setCreatorId(Integer creatorId) {
         this.creatorId = creatorId;
     }
 
@@ -371,7 +371,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getHits() {
+    public Integer getHits() {
         return hits;
     }
 
@@ -383,7 +383,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setHits(Long hits) {
+    public void setHits(Integer hits) {
         this.hits = hits;
     }
 
@@ -395,7 +395,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getFavorites() {
+    public Integer getFavorites() {
         return favorites;
     }
 
@@ -407,7 +407,7 @@ public class TPost extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setFavorites(Long favorites) {
+    public void setFavorites(Integer favorites) {
         this.favorites = favorites;
     }
 

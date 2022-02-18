@@ -39,7 +39,7 @@ public interface TPostMapper {
         "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
         "#{content,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, ",
         "#{video,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, ",
-        "#{creatorId,jdbcType=BIGINT}, #{hits,jdbcType=BIGINT}, #{favorites,jdbcType=BIGINT}, ",
+        "#{creatorId,jdbcType=INTEGER}, #{hits,jdbcType=INTEGER}, #{favorites,jdbcType=INTEGER}, ",
         "#{createTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, #{agree,jdbcType=INTEGER}, ",
         "#{disagree,jdbcType=INTEGER}, #{summary,jdbcType=VARCHAR})"
     })
@@ -67,9 +67,9 @@ public interface TPostMapper {
         @Result(column="video", property="video", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.INTEGER),
         @Result(column="is_deleted", property="isDeleted", jdbcType=JdbcType.INTEGER),
-        @Result(column="creator_id", property="creatorId", jdbcType=JdbcType.BIGINT),
-        @Result(column="hits", property="hits", jdbcType=JdbcType.BIGINT),
-        @Result(column="favorites", property="favorites", jdbcType=JdbcType.BIGINT),
+        @Result(column="creator_id", property="creatorId", jdbcType=JdbcType.INTEGER),
+        @Result(column="hits", property="hits", jdbcType=JdbcType.INTEGER),
+        @Result(column="favorites", property="favorites", jdbcType=JdbcType.INTEGER),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="agree", property="agree", jdbcType=JdbcType.INTEGER),
@@ -100,9 +100,9 @@ public interface TPostMapper {
         @Result(column="video", property="video", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.INTEGER),
         @Result(column="is_deleted", property="isDeleted", jdbcType=JdbcType.INTEGER),
-        @Result(column="creator_id", property="creatorId", jdbcType=JdbcType.BIGINT),
-        @Result(column="hits", property="hits", jdbcType=JdbcType.BIGINT),
-        @Result(column="favorites", property="favorites", jdbcType=JdbcType.BIGINT),
+        @Result(column="creator_id", property="creatorId", jdbcType=JdbcType.INTEGER),
+        @Result(column="hits", property="hits", jdbcType=JdbcType.INTEGER),
+        @Result(column="favorites", property="favorites", jdbcType=JdbcType.INTEGER),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="agree", property="agree", jdbcType=JdbcType.INTEGER),
@@ -126,9 +126,9 @@ public interface TPostMapper {
           "video = #{video,jdbcType=VARCHAR},",
           "type = #{type,jdbcType=INTEGER},",
           "is_deleted = #{isDeleted,jdbcType=INTEGER},",
-          "creator_id = #{creatorId,jdbcType=BIGINT},",
-          "hits = #{hits,jdbcType=BIGINT},",
-          "favorites = #{favorites,jdbcType=BIGINT},",
+          "creator_id = #{creatorId,jdbcType=INTEGER},",
+          "hits = #{hits,jdbcType=INTEGER},",
+          "favorites = #{favorites,jdbcType=INTEGER},",
           "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "modified_time = #{modifiedTime,jdbcType=TIMESTAMP}",
           "#{agree,jdbcType=INTEGER}, ",
@@ -140,12 +140,18 @@ public interface TPostMapper {
 
     @Update({
         "update t_post",
-        "set agree = #{agree,jdbcType=BIGINT}",
+        "set agree = #{agree,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateAgreeById(int id, int agree);
 
     @Select("select agree from t_post where id = #{id,jdbcType=INTEGER}")
     int selectAgreeById(int id);
+
+    @Select("select * from t_post limit #{offset}, #{size}")
+    List<TPost> list(Integer offset, Integer size);
+
+    @Select("select count(1) from t_post")
+    Integer count();
 
 }

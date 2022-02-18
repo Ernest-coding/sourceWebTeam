@@ -19,7 +19,7 @@ public interface THistoryMapper {
      */
     @Delete({
         "delete from t_history",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Long id);
 
@@ -32,8 +32,8 @@ public interface THistoryMapper {
     @Insert({
         "insert into t_history (id, user_id, ",
         "post_id, view_date)",
-        "values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, ",
-        "#{postId,jdbcType=BIGINT}, #{viewDate,jdbcType=TIMESTAMP})"
+        "values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, ",
+        "#{postId,jdbcType=INTEGER}, #{viewDate,jdbcType=TIMESTAMP})"
     })
     int insert(THistory record);
 
@@ -47,12 +47,12 @@ public interface THistoryMapper {
         "select",
         "id, user_id, post_id, view_date",
         "from t_history",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="user_id", property="userId", jdbcType=JdbcType.BIGINT),
-        @Result(column="post_id", property="postId", jdbcType=JdbcType.BIGINT),
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER),
+        @Result(column="post_id", property="postId", jdbcType=JdbcType.INTEGER),
         @Result(column="view_date", property="viewDate", jdbcType=JdbcType.TIMESTAMP)
     })
     THistory selectByPrimaryKey(Long id);
@@ -70,9 +70,9 @@ public interface THistoryMapper {
         "order by view_date"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="user_id", property="userId", jdbcType=JdbcType.BIGINT),
-        @Result(column="post_id", property="postId", jdbcType=JdbcType.BIGINT),
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER),
+        @Result(column="post_id", property="postId", jdbcType=JdbcType.INTEGER),
         @Result(column="view_date", property="viewDate", jdbcType=JdbcType.TIMESTAMP)
     })
     List<THistory> selectAll();
@@ -85,10 +85,10 @@ public interface THistoryMapper {
      */
     @Update({
         "update t_history",
-        "set user_id = #{userId,jdbcType=BIGINT},",
-          "post_id = #{postId,jdbcType=BIGINT},",
+        "set user_id = #{userId,jdbcType=INTEGER},",
+          "post_id = #{postId,jdbcType=INTEGER},",
           "view_date = #{viewDate,jdbcType=TIMESTAMP}",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(THistory record);
 }

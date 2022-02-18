@@ -16,7 +16,7 @@ public class TFollowFanMapperTest {
 
     @Test
     public void selectAllFollowById () {
-        Long id = (long)1;
+        Integer id = 1;
         List<TUser> tUsers = tFollowFanMapper.selectAllFollowById(id);
         System.out.println( tUsers.get(0).getUsername() );
         System.out.println( tUsers.get(1).getUsername() );

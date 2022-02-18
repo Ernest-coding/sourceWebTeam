@@ -19,7 +19,7 @@ public interface TMessageMapper {
      */
     @Delete({
         "delete from t_message",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Long id);
 
@@ -34,8 +34,8 @@ public interface TMessageMapper {
         "user2_id, create_user, ",
         "create_time, content, ",
         "status)",
-        "values (#{id,jdbcType=BIGINT}, #{user1Id,jdbcType=BIGINT}, ",
-        "#{user2Id,jdbcType=BIGINT}, #{createUser,jdbcType=BIGINT}, ",
+        "values (#{id,jdbcType=INTEGER}, #{user1Id,jdbcType=INTEGER}, ",
+        "#{user2Id,jdbcType=INTEGER}, #{createUser,jdbcType=INTEGER}, ",
         "#{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=VARCHAR}, ",
         "#{status,jdbcType=INTEGER})"
     })
@@ -51,13 +51,13 @@ public interface TMessageMapper {
         "select",
         "id, user1_id, user2_id, create_user, create_time, content, status",
         "from t_message",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="user1_id", property="user1Id", jdbcType=JdbcType.BIGINT),
-        @Result(column="user2_id", property="user2Id", jdbcType=JdbcType.BIGINT),
-        @Result(column="create_user", property="createUser", jdbcType=JdbcType.BIGINT),
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="user1_id", property="user1Id", jdbcType=JdbcType.INTEGER),
+        @Result(column="user2_id", property="user2Id", jdbcType=JdbcType.INTEGER),
+        @Result(column="create_user", property="createUser", jdbcType=JdbcType.INTEGER),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
         @Result(column="status", property="status", jdbcType=JdbcType.INTEGER)
@@ -77,10 +77,10 @@ public interface TMessageMapper {
         "order by id"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="user1_id", property="user1Id", jdbcType=JdbcType.BIGINT),
-        @Result(column="user2_id", property="user2Id", jdbcType=JdbcType.BIGINT),
-        @Result(column="create_user", property="createUser", jdbcType=JdbcType.BIGINT),
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="user1_id", property="user1Id", jdbcType=JdbcType.INTEGER),
+        @Result(column="user2_id", property="user2Id", jdbcType=JdbcType.INTEGER),
+        @Result(column="create_user", property="createUser", jdbcType=JdbcType.INTEGER),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
         @Result(column="status", property="status", jdbcType=JdbcType.INTEGER)
@@ -95,13 +95,13 @@ public interface TMessageMapper {
      */
     @Update({
         "update t_message",
-        "set user1_id = #{user1Id,jdbcType=BIGINT},",
-          "user2_id = #{user2Id,jdbcType=BIGINT},",
-          "create_user = #{createUser,jdbcType=BIGINT},",
+        "set user1_id = #{user1Id,jdbcType=INTEGER},",
+          "user2_id = #{user2Id,jdbcType=INTEGER},",
+          "create_user = #{createUser,jdbcType=INTEGER},",
           "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "content = #{content,jdbcType=VARCHAR},",
           "status = #{status,jdbcType=INTEGER}",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TMessage record);
 }

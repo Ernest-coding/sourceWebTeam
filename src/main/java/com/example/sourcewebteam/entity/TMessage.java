@@ -10,7 +10,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long id;
+    private Integer id;
 
     /**
      *
@@ -19,7 +19,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long user1Id;
+    private Integer user1Id;
 
     /**
      *
@@ -28,7 +28,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long user2Id;
+    private Integer user2Id;
 
     /**
      *
@@ -37,7 +37,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long createUser;
+    private Integer createUser;
 
     /**
      *
@@ -74,7 +74,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -86,7 +86,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -98,7 +98,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getUser1Id() {
+    public Integer getUser1Id() {
         return user1Id;
     }
 
@@ -110,7 +110,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setUser1Id(Long user1Id) {
+    public void setUser1Id(Integer user1Id) {
         this.user1Id = user1Id;
     }
 
@@ -122,7 +122,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getUser2Id() {
+    public Integer getUser2Id() {
         return user2Id;
     }
 
@@ -134,7 +134,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setUser2Id(Long user2Id) {
+    public void setUser2Id(Integer user2Id) {
         this.user2Id = user2Id;
     }
 
@@ -146,7 +146,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getCreateUser() {
+    public Integer getCreateUser() {
         return createUser;
     }
 
@@ -158,7 +158,7 @@ public class TMessage extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setCreateUser(Long createUser) {
+    public void setCreateUser(Integer createUser) {
         this.createUser = createUser;
     }
 

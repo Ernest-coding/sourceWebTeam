@@ -10,7 +10,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long id;
+    private Integer id;
 
     /**
      *
@@ -19,7 +19,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long notifier;
+    private Integer notifier;
 
     /**
      *
@@ -28,7 +28,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    private Long receiver;
+    private Integer receiver;
 
     /**
      *
@@ -65,7 +65,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -77,7 +77,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -89,7 +89,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getNotifier() {
+    public Integer getNotifier() {
         return notifier;
     }
 
@@ -101,7 +101,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setNotifier(Long notifier) {
+    public void setNotifier(Integer notifier) {
         this.notifier = notifier;
     }
 
@@ -113,7 +113,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public Long getReceiver() {
+    public Integer getReceiver() {
         return receiver;
     }
 
@@ -125,7 +125,7 @@ public class TNotification extends baseEntity {
      *
      * @mbg.generated Wed Feb 16 20:53:31 CST 2022
      */
-    public void setReceiver(Long receiver) {
+    public void setReceiver(Integer receiver) {
         this.receiver = receiver;
     }
 

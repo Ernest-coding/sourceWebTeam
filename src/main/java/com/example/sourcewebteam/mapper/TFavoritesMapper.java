@@ -19,7 +19,7 @@ public interface TFavoritesMapper {
      */
     @Delete({
         "delete from t_favorites",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Long id);
 
@@ -32,8 +32,8 @@ public interface TFavoritesMapper {
     @Insert({
         "insert into t_favorites (id, user_id, ",
         "post_id)",
-        "values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, ",
-        "#{postId,jdbcType=BIGINT})"
+        "values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, ",
+        "#{postId,jdbcType=INTEGER})"
     })
     int insert(TFavorites record);
 
@@ -47,12 +47,12 @@ public interface TFavoritesMapper {
         "select",
         "id, user_id, post_id",
         "from t_favorites",
-        "where id = #{id,jdbcType=BIGINT}"
+        "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="user_id", property="userId", jdbcType=JdbcType.BIGINT),
-        @Result(column="post_id", property="postId", jdbcType=JdbcType.BIGINT)
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER),
+        @Result(column="post_id", property="postId", jdbcType=JdbcType.INTEGER)
     })
     TFavorites selectByPrimaryKey(Long id);
 
@@ -69,9 +69,9 @@ public interface TFavoritesMapper {
         "order by id"
     })
     @Results({
-        @Result(column="id", property="id", jdbcType=JdbcType.BIGINT, id=true),
-        @Result(column="user_id", property="userId", jdbcType=JdbcType.BIGINT),
-        @Result(column="post_id", property="postId", jdbcType=JdbcType.BIGINT)
+        @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="user_id", property="userId", jdbcType=JdbcType.INTEGER),
+        @Result(column="post_id", property="postId", jdbcType=JdbcType.INTEGER)
     })
     List<TFavorites> selectAll();
 
@@ -83,9 +83,9 @@ public interface TFavoritesMapper {
      */
     @Update({
         "update t_favorites",
-        "set user_id = #{userId,jdbcType=BIGINT},",
-          "post_id = #{postId,jdbcType=BIGINT}",
-        "where id = #{id,jdbcType=BIGINT}"
+        "set user_id = #{userId,jdbcType=INTEGER},",
+          "post_id = #{postId,jdbcType=INTEGER}",
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TFavorites record);
 }

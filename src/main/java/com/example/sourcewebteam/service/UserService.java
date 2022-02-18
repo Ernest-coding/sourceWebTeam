@@ -21,7 +21,7 @@ public class UserService {
     @Autowired
     private TFollowFanMapper tFollowFanMapper;
 
-    public List<TUser> selectAllFollowById (Long id) {
+    public List<TUser> selectAllFollowById (Integer id) {
         List<TUser> tUsers = tFollowFanMapper.selectAllFollowById(id);
         return tUsers;
     }
