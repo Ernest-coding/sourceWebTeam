@@ -72,4 +72,11 @@ public class PostService {
         paginationDTO.setPosts(postDTOList);
         return paginationDTO;
     }
+
+    public PostDTO getDTOById(Integer id) {
+        TPost post = postMapper.selectByPrimaryKey(id);
+        PostDTO postDTO = new PostDTO();
+        BeanUtils.copyProperties(post, postDTO);
+        return postDTO;
+    }
 }
