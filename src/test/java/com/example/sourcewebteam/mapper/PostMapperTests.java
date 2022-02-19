@@ -16,25 +16,28 @@ public class PostMapperTests {
     private TPostMapper postMapper;
     @Test
     public void insert(){
-        TPost post = new TPost();
-        post.setTitle("title");
-        post.setContent("content");
-        post.setTag("tag");
-        post.setImage("image");
-        post.setVideo("video");
-        post.setType(0);
-        post.setIsDeleted(0);
-        post.setCreatorId(2333);
-        post.setHits(233);
-        post.setFavorites(233);
-        Date date = new Date();
-        post.setCreateTime(date);
-        post.setModifiedTime(date);
-        post.setAgree(200);
-        post.setDisagree(400);
-        post.setSummary("summary");
-        int rows = postMapper.insert(post);
-        System.out.println(rows);
+        for(int i = 0 ; i < 20 ; i++){
+            TPost post = new TPost();
+            post.setTitle("title");
+            post.setContent("content");
+            post.setTag("tag");
+            post.setImage("image");
+            post.setVideo("video");
+            post.setType(0);
+            post.setIsDeleted(0);
+            post.setCreatorId(i + 1);
+            post.setHits(233);
+            post.setFavorites(233);
+            Date date = new Date();
+            post.setCreateTime(date);
+            post.setModifiedTime(date);
+            post.setAgree(200);
+            post.setDisagree(400);
+            post.setSummary("summary");
+            int rows = postMapper.insert(post);
+            System.out.println(rows);
+        }
+
     }
     @Test
     public void updateAgreeById(){

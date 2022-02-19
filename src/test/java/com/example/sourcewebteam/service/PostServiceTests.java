@@ -1,5 +1,6 @@
 package com.example.sourcewebteam.mapper;
 
+import com.example.sourcewebteam.dto.PaginationDTO;
 import com.example.sourcewebteam.entity.TUser;
 import com.example.sourcewebteam.service.PostService;
 import org.junit.Test;
@@ -16,6 +17,11 @@ public class PostServiceTests {
     @Test
     public void doAgree(){
         postService.doAgree(1, 1);
+    }
+    @Test
+    public void list(){
+        PaginationDTO list = postService.list(1, 3);
+        System.out.println(list.getTotalPage());
     }
 
 }
