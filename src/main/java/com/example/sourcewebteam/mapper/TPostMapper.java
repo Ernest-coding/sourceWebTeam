@@ -140,10 +140,10 @@ public interface TPostMapper {
 
     @Update({
         "update t_post",
-        "set agree = #{agree,jdbcType=INTEGER}",
+        "set agree = agree + 1",
         "where id = #{id,jdbcType=INTEGER}"
     })
-    int updateAgreeById(int id, int agree);
+    int increaseAgreeById(int id);
 
     @Select("select agree from t_post where id = #{id,jdbcType=INTEGER}")
     int selectAgreeById(int id);
@@ -153,5 +153,17 @@ public interface TPostMapper {
 
     @Select("select count(1) from t_post")
     Integer count();
+
+    int updatePostById(TPost post);
+
+    @Select("select hits from t_post where id = #{id,jdbcType=INTEGER}")
+    int selectHitsById(int id);
+
+    @Update({
+            "update t_post",
+            "set hits = hits + 1",
+            "where id = #{id,jdbcType=INTEGER}"
+    })
+    int increaseHitsById(int id);
 
 }

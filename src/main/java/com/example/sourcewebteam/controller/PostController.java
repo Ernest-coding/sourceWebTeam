@@ -1,5 +1,6 @@
 package com.example.sourcewebteam.controller;
 
+import com.example.sourcewebteam.controller.ex.PostNotFound;
 import com.example.sourcewebteam.dto.PostDTO;
 import com.example.sourcewebteam.service.PostService;
 import com.example.sourcewebteam.util.JsonResult;
@@ -15,6 +16,7 @@ public class PostController extends BaseController{
     @GetMapping("/post/{id}")
     public JsonResult<PostDTO> post(@PathVariable(name = "id") Integer id){
         PostDTO postDTO = postService.getDTOById(id);
+        postService.increaseHits(id);
         return new JsonResult<PostDTO>(success, postDTO);
     }
 }

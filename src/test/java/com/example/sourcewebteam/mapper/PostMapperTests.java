@@ -40,8 +40,13 @@ public class PostMapperTests {
 
     }
     @Test
-    public void updateAgreeById(){
-        int rows  = postMapper.updateAgreeById(1, 999);
+    public void increaseHitsById(){
+        int rows = postMapper.increaseHitsById(1);
+        System.out.println(rows);
+    }
+    @Test
+    public void increaseAgreesById(){
+        int rows = postMapper.increaseAgreeById(1);
         System.out.println(rows);
     }
 }
