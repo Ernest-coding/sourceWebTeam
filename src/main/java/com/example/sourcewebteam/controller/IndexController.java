@@ -19,26 +19,13 @@ import java.util.List;
 
 @RestController
 public class IndexController extends BaseController{
-    @Autowired
-    private TUserMapper tuserMapper;
+
     @Autowired
     private PostService postService;
 
     @RequestMapping("/")
-    public JsonResult<PaginationDTO> index(HttpServletRequest request,
-                                           @RequestParam(name = "page", defaultValue = "1") Integer page,
+    public JsonResult<PaginationDTO> index(@RequestParam(name = "page", defaultValue = "1") Integer page,
                                            @RequestParam(name = "size", defaultValue = "1") Integer size){
-        Cookie[] cookies = request.getCookies();
-        for(Cookie cookie : cookies) {
-            if(cookie.getName().equals("token")){
-                String token = cookie.getValue();
-                TUser user = tuserMapper.selectByToken(token);
-                if(user != null) {
-                    request.getSession().setAttribute("username", user.getUsername());
-                }
-                break;
-            }
-        }
         PaginationDTO pagination = postService.list(page, size);
         return new JsonResult<PaginationDTO>(success, pagination);
     }

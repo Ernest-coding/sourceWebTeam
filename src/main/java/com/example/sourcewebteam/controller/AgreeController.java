@@ -17,21 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("api")
 public class AgreeController extends BaseController{
     @Autowired
-    private TUserMapper userMapper;
-    @Autowired
     private PostService postService;
 
     @RequestMapping("agree")
     public JsonResult<Void> Agree(@RequestParam("id") int id, HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
-        TUser user = null;
-        for(Cookie cookie : cookies) {
-            if(cookie.getName().equals("token")){
-                String token = cookie.getValue();
-                user = userMapper.selectByToken(token);
-                break;
-            }
-        }
+        TUser user = (TUser) request.getSession().getAttribute("user");
         if(user == null){
             throw new UserNotLoginException("用户未登录");
         }
