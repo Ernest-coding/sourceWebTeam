@@ -33,11 +33,11 @@ public interface TCommentMapper {
         "insert into t_comment (id, parent_id, ",
         "commentator, create_time, ",
         "modified_time, likes, ",
-        "content, comment_count)",
+        "content, comment_count, type)",
         "values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, ",
         "#{commentator,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, ",
         "#{modifiedTime,jdbcType=TIMESTAMP}, #{likes,jdbcType=INTEGER}, ",
-        "#{content,jdbcType=VARCHAR}, #{commentCount,jdbcType=INTEGER})"
+        "#{content,jdbcType=VARCHAR}, #{commentCount,jdbcType=INTEGER}, #{type,jdbcType=INTEGER})"
     })
     int insert(TComment record);
 
@@ -49,7 +49,7 @@ public interface TCommentMapper {
      */
     @Select({
         "select",
-        "id, parent_id, commentator, create_time, modified_time, likes, content, comment_count",
+        "id, parent_id, commentator, create_time, modified_time, likes, content, comment_count, type",
         "from t_comment",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -61,7 +61,8 @@ public interface TCommentMapper {
         @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="likes", property="likes", jdbcType=JdbcType.INTEGER),
         @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
-        @Result(column="comment_count", property="commentCount", jdbcType=JdbcType.INTEGER)
+        @Result(column="comment_count", property="commentCount", jdbcType=JdbcType.INTEGER),
+        @Result(column="type", property="type", jdbcType=JdbcType.INTEGER)
     })
     TComment selectByPrimaryKey(Integer id);
 
@@ -73,7 +74,7 @@ public interface TCommentMapper {
      */
     @Select({
         "select",
-        "id, parent_id, commentator, create_time, modified_time, likes, content, comment_count",
+        "id, parent_id, commentator, create_time, modified_time, likes, content, comment_count, type",
         "from t_comment",
         "order by id"
     })
@@ -85,7 +86,9 @@ public interface TCommentMapper {
         @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="likes", property="likes", jdbcType=JdbcType.INTEGER),
         @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
-        @Result(column="comment_count", property="commentCount", jdbcType=JdbcType.INTEGER)
+        @Result(column="comment_count", property="commentCount", jdbcType=JdbcType.INTEGER),
+        @Result(column="type", property="type", jdbcType=JdbcType.INTEGER)
+
     })
     List<TComment> selectAll();
 
@@ -104,7 +107,15 @@ public interface TCommentMapper {
           "likes = #{likes,jdbcType=INTEGER},",
           "content = #{content,jdbcType=VARCHAR},",
           "comment_count = #{commentCount,jdbcType=INTEGER}",
+          "type = #{type,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TComment record);
+
+    @Update({
+            "update t_comment",
+            "set comment_count = comment_count + 1",
+            "where id = #{id,jdbcType=INTEGER}"
+    })
+    int increaseCommentCountById(Integer id);
 }

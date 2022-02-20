@@ -29,6 +29,8 @@ public class BaseController {
             result.setState(4004);
         } else if(e instanceof PostNotFound){
             result.setState(4005);
+        } else if(e instanceof CommentNotFound){
+            result.setState(4006);
         }
         result.setMessage(e.getMessage());
         return result;

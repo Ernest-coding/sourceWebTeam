@@ -35,13 +35,13 @@ public interface TPostMapper {
         "video, type, is_deleted, ",
         "creator_id, hits, favorites, ",
         "create_time, modified_time, ",
-        "agree, disagree, summary)",
+        "agree, disagree, summary, comment_count)",
         "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
         "#{content,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, ",
         "#{video,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, ",
         "#{creatorId,jdbcType=INTEGER}, #{hits,jdbcType=INTEGER}, #{favorites,jdbcType=INTEGER}, ",
         "#{createTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, #{agree,jdbcType=INTEGER}, ",
-        "#{disagree,jdbcType=INTEGER}, #{summary,jdbcType=VARCHAR})"
+        "#{disagree,jdbcType=INTEGER}, #{summary,jdbcType=VARCHAR}, #{commentCount,jdbcType=INTEGER})"
     })
     int insert(TPost record);
 
@@ -54,7 +54,7 @@ public interface TPostMapper {
     @Select({
         "select",
         "id, title, content, tag, image, video, type, is_deleted, creator_id, hits, favorites, ",
-        "create_time, modified_time, agree, disagree, summary",
+        "create_time, modified_time, agree, disagree, summary, comment_count",
         "from t_post",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -74,7 +74,8 @@ public interface TPostMapper {
         @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="agree", property="agree", jdbcType=JdbcType.INTEGER),
         @Result(column="disagree", property="disagree", jdbcType=JdbcType.INTEGER),
-        @Result(column="summary", property="summary", jdbcType=JdbcType.INTEGER)
+        @Result(column="summary", property="summary", jdbcType=JdbcType.INTEGER),
+        @Result(column="comment_count", property="commentCount", jdbcType=JdbcType.INTEGER)
     })
     TPost selectByPrimaryKey(Integer id);
 
@@ -87,7 +88,7 @@ public interface TPostMapper {
     @Select({
         "select",
         "id, title, content, tag, image, video, type, is_deleted, creator_id, hits, favorites, ",
-        "create_time, modified_time, agree, disagree, summary",
+        "create_time, modified_time, agree, disagree, summary, comment_count",
         "from t_post",
         "order by id"
     })
@@ -107,7 +108,8 @@ public interface TPostMapper {
         @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="agree", property="agree", jdbcType=JdbcType.INTEGER),
         @Result(column="disagree", property="disagree", jdbcType=JdbcType.INTEGER),
-        @Result(column="summary", property="summary", jdbcType=JdbcType.INTEGER)
+        @Result(column="summary", property="summary", jdbcType=JdbcType.INTEGER),
+        @Result(column="comment_count", property="commentCount", jdbcType=JdbcType.INTEGER)
     })
     List<TPost> selectAll();
 
@@ -131,9 +133,10 @@ public interface TPostMapper {
           "favorites = #{favorites,jdbcType=INTEGER},",
           "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "modified_time = #{modifiedTime,jdbcType=TIMESTAMP}",
-          "#{agree,jdbcType=INTEGER}, ",
-          "#{disagree,jdbcType=INTEGER},",
-          "#{summary,jdbcType=VARCHAR}",
+          "#agree = #{agree,jdbcType=INTEGER}, ",
+          "#disagree = #{disagree,jdbcType=INTEGER},",
+          "#summary = #{summary,jdbcType=VARCHAR}",
+          "#comment_count = #{commentCount,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TPost record);
@@ -166,4 +169,10 @@ public interface TPostMapper {
     })
     int increaseHitsById(int id);
 
+    @Update({
+            "update t_post",
+            "set comment_count = comment_count + 1",
+            "where id = #{id,jdbcType=INTEGER}"
+    })
+    int increaseCommentCountById(int id);
 }

@@ -104,6 +104,7 @@ public class PostService {
             post.setFavorites(0);
             post.setAgree(0);
             post.setDisagree(0);
+            post.setCommentCount(0);
             row = postMapper.insert(post);
             if(row != 1){
                 throw new InsertException("用户在插入数据时产生未知的异常");

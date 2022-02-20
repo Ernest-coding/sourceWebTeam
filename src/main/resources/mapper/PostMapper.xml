@@ -20,7 +20,7 @@
         <if test="modifiedTime!=null"> modified_time = #{modifiedTime}, </if>
         <if test="agree!=null"> agree = #{agree}, </if>
         <if test="disagree!=null"> disagree = #{disagree}, </if>
-        <if test="views!=null"> views = #{views} </if>
+        <if test="commentCount!=null"> comment_count = #{commentCount} </if>
         where id = #{id}
     </update>
 </mapper>

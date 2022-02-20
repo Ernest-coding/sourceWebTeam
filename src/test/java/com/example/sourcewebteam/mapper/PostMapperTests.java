@@ -16,7 +16,7 @@ public class PostMapperTests {
     private TPostMapper postMapper;
     @Test
     public void insert(){
-        for(int i = 0 ; i < 20 ; i++){
+        for(int i = 0 ; i < 1 ; i++){
             TPost post = new TPost();
             post.setTitle("title");
             post.setContent("content");
@@ -34,6 +34,7 @@ public class PostMapperTests {
             post.setAgree(200);
             post.setDisagree(400);
             post.setSummary("summary");
+            post.setCommentCount(0);
             int rows = postMapper.insert(post);
             System.out.println(rows);
         }

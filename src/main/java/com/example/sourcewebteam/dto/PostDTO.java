@@ -21,6 +21,7 @@ public class PostDTO {
     private Date modifiedTime;
     private Integer agree;
     private Integer disagree;
+    private Integer commentCount;
     private String summary;
     private TUser user;
 }

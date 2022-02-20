@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class PublishController extends BaseController {
     @Autowired
     private PostService postService;

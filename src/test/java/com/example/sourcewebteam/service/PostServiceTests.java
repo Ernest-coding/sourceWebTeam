@@ -1,4 +1,4 @@
-package com.example.sourcewebteam.mapper;
+package com.example.sourcewebteam.service;
 
 import com.example.sourcewebteam.dto.PaginationDTO;
 import com.example.sourcewebteam.entity.TPost;
@@ -46,6 +46,7 @@ public class PostServiceTests {
         post.setAgree(200);
         post.setDisagree(400);
         post.setSummary("summary2");
+        post.setCommentCount(10000);
         postService.addorUpdatePost(post);
     }
     @Test

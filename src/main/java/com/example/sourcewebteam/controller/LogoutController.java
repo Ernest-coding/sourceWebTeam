@@ -17,7 +17,7 @@ public class LogoutController extends BaseController{
      * logout 退出登录,移除cookie和session
      * @return
      */
-    @RequestMapping("logout")
+    @RequestMapping("/logout")
     public JsonResult<Void> logout(HttpServletRequest request, HttpServletResponse response){
         request.getSession().removeAttribute("user");
         Cookie cookie = new Cookie("token", null);

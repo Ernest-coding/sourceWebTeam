@@ -14,12 +14,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class AgreeController extends BaseController{
     @Autowired
     private PostService postService;
 
-    @RequestMapping("agree")
+    @RequestMapping("/agree")
     public JsonResult<Void> Agree(@RequestParam("id") int id, HttpServletRequest request){
         TUser user = (TUser) request.getSession().getAttribute("user");
         if(user == null){
