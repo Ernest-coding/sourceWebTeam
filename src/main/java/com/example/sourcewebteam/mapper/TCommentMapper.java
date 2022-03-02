@@ -118,4 +118,23 @@ public interface TCommentMapper {
             "where id = #{id,jdbcType=INTEGER}"
     })
     int increaseCommentCountById(Integer id);
+
+    @Select({
+            "select",
+            "id, parent_id, commentator, create_time, modified_time, likes, content, comment_count, type",
+            "from t_comment",
+            "where id = #{id,jdbcType=INTEGER} and type = #{id,jdbcType=INTEGER}"
+    })
+    @Results({
+            @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+            @Result(column="parent_id", property="parentId", jdbcType=JdbcType.INTEGER),
+            @Result(column="commentator", property="commentator", jdbcType=JdbcType.INTEGER),
+            @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="modified_time", property="modifiedTime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="likes", property="likes", jdbcType=JdbcType.INTEGER),
+            @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
+            @Result(column="comment_count", property="commentCount", jdbcType=JdbcType.INTEGER),
+            @Result(column="type", property="type", jdbcType=JdbcType.INTEGER)
+    })
+    List<TComment> selectAllByIdAndType(Integer id, Integer type);
 }

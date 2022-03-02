@@ -2,17 +2,24 @@ package com.example.sourcewebteam.service;
 
 import com.example.sourcewebteam.CommentTypeEnum;
 import com.example.sourcewebteam.controller.ex.PostNotFound;
+import com.example.sourcewebteam.dto.CommentDTO;
 import com.example.sourcewebteam.entity.TComment;
 import com.example.sourcewebteam.entity.TPost;
+import com.example.sourcewebteam.entity.TUser;
 import com.example.sourcewebteam.mapper.TCommentMapper;
 import com.example.sourcewebteam.mapper.TPostMapper;
+import com.example.sourcewebteam.mapper.TUserMapper;
 import com.example.sourcewebteam.service.ex.CommentNotFound;
 import com.example.sourcewebteam.service.ex.CommentTypeException;
 import com.example.sourcewebteam.service.ex.InsertException;
 import com.example.sourcewebteam.service.ex.UpdateException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CommentService {
@@ -20,6 +27,8 @@ public class CommentService {
     private TCommentMapper commentMapper;
     @Autowired
     private TPostMapper postMapper;
+    @Autowired
+    private TUserMapper userMapper;
     @Transactional
     public void doComment(TComment comment){
         int rows;
@@ -62,5 +71,24 @@ public class CommentService {
 
         }
 
+    }
+
+    /**
+     * 查找某个帖子之下的所有一级评论，并和对应的评论人User打包成CommentDTO传回
+     * @param id
+     * @return
+     */
+    public List<CommentDTO> listByTargetIdAndType(Integer id, CommentTypeEnum type) {
+        List<CommentDTO> commentDTOS = new ArrayList<>();
+        List<TComment> comments = commentMapper.selectAllByIdAndType(id, type.getType());
+        for (TComment comment : comments) {
+            Integer uid = comment.getCommentator();
+            TUser user = userMapper.selectByPrimaryKey(uid);
+            CommentDTO commentDTO = new CommentDTO();
+            BeanUtils.copyProperties(comment, commentDTO);
+            commentDTO.setUser(user);
+            commentDTOS.add(commentDTO);
+        }
+        return commentDTOS;
     }
 }

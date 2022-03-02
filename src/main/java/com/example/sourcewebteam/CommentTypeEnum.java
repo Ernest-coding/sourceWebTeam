@@ -1,6 +1,6 @@
 package com.example.sourcewebteam;
 
-public enum CommentTypeEnum {
+public enum  CommentTypeEnum {
     LEVEL_ONE_COMMENT(1),
     LEVEL_TWO_COMMENT(2);
     private final Integer type;
